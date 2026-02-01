@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" 
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  id="Definitions_1" 
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_System" name="System">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Direct_Manager" name="Direct Manager">
+        <bpmn:flowNodeRef>Task_Reviews_relevance_2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Approves_or_rejects_3</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Employee" name="Employee">
+        <bpmn:flowNodeRef>Task_Submits_a_training_request_with_course_n_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Finance_Officer" name="Finance Officer">
+        <bpmn:flowNodeRef>Task_Processes_payment_5</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_HR_Representative" name="HR Representative">
+        <bpmn:flowNodeRef>Task_Enrolls_the_employee_and_sends_confirmat_6</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Start" />
+    <bpmn:task id="Task_Submits_a_training_request_with_course_n_1" name="Submits a training request with course name, training provider, cost, duration, and business justification" />
+    <bpmn:task id="Task_Reviews_relevance_2" name="Reviews relevance" />
+    <bpmn:exclusiveGateway id="Gateway_Approves_or_rejects_3" name="Approves or rejects" />
+    <bpmn:task id="Task_Processes_payment_5" name="Processes payment" />
+    <bpmn:task id="Task_Enrolls_the_employee_and_sends_confirmat_6" name="Enrolls the employee and sends confirmation with training details" />
+    <bpmn:endEvent id="EndEvent_1" name="End" />
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_Submits_a_training_request_with_course_n_1" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Submits_a_training_request_with_course_n_1" targetRef="Task_Reviews_relevance_2" />
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_Reviews_relevance_2" targetRef="Gateway_Approves_or_rejects_3" />
+    <bpmn:sequenceFlow id="Flow_4" name="Approved" sourceRef="Gateway_Approves_or_rejects_3" targetRef="Task_Processes_payment_5" />
+    <bpmn:sequenceFlow id="Flow_5" name="Rejected" sourceRef="Gateway_Approves_or_rejects_3" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_Processes_payment_5" targetRef="Task_Enrolls_the_employee_and_sends_confirmat_6" />
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="Task_Enrolls_the_employee_and_sends_confirmat_6" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Lane_System_di" bpmnElement="Lane_System" isHorizontal="true">
+        <dc:Bounds x="30" y="50" width="2350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Direct_Manager_di" bpmnElement="Lane_Direct_Manager" isHorizontal="true">
+        <dc:Bounds x="30" y="250" width="2350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Employee_di" bpmnElement="Lane_Employee" isHorizontal="true">
+        <dc:Bounds x="30" y="450" width="2350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Finance_Officer_di" bpmnElement="Lane_Finance_Officer" isHorizontal="true">
+        <dc:Bounds x="30" y="650" width="2350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_HR_Representative_di" bpmnElement="Lane_HR_Representative" isHorizontal="true">
+        <dc:Bounds x="30" y="850" width="2350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="132" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Submits_a_training_request_with_course_n_1_di" bpmnElement="Task_Submits_a_training_request_with_course_n_1">
+        <dc:Bounds x="400" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Reviews_relevance_2_di" bpmnElement="Task_Reviews_relevance_2">
+        <dc:Bounds x="700" y="310" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Approves_or_rejects_3_di" bpmnElement="Gateway_Approves_or_rejects_3" isMarkerVisible="true">
+        <dc:Bounds x="1025" y="325" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Processes_payment_5_di" bpmnElement="Task_Processes_payment_5">
+        <dc:Bounds x="1300" y="670" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Enrolls_the_employee_and_sends_confirmat_6_di" bpmnElement="Task_Enrolls_the_employee_and_sends_confirmat_6">
+        <dc:Bounds x="1600" y="870" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1932" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="168" y="150" />
+        <di:waypoint x="284" y="150" />
+        <di:waypoint x="284" y="550" />
+        <di:waypoint x="400" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="500" y="550" />
+        <di:waypoint x="600" y="550" />
+        <di:waypoint x="600" y="350" />
+        <di:waypoint x="700" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="800" y="350" />
+        <di:waypoint x="1025" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="1075" y="350" />
+        <di:waypoint x="1187" y="350" />
+        <di:waypoint x="1187" y="710" />
+        <di:waypoint x="1300" y="710" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1167" y="514" width="80" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="1075" y="350" />
+        <di:waypoint x="1503" y="350" />
+        <di:waypoint x="1503" y="110" />
+        <di:waypoint x="1932" y="110" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1483" y="246" width="80" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="1400" y="710" />
+        <di:waypoint x="1500" y="710" />
+        <di:waypoint x="1500" y="910" />
+        <di:waypoint x="1600" y="910" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1700" y="910" />
+        <di:waypoint x="1816" y="910" />
+        <di:waypoint x="1816" y="110" />
+        <di:waypoint x="1932" y="110" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
