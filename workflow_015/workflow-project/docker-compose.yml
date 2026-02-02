@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # SQL Server Database
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: workflow_db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    healthcheck:
+      test: /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -Q 'SELECT 1' -C || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 40s
+    networks:
+      - workflow_network
+
+  # Database Initialization Service
+  db-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: workflow_db_init
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./database/init.sql:/init.sql
+    entrypoint: >
+      /bin/bash -c "
+      echo 'Waiting for SQL Server to be ready...';
+      sleep 10;
+      echo 'Initializing database...';
+      /opt/mssql-tools18/bin/sqlcmd -S db -U sa -P 'YourStrong@Passw0rd' -i /init.sql -C;
+      echo 'Database initialization complete';
+      "
+    networks:
+      - workflow_network
+
+  # Backend API (C# ASP.NET Core)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: workflow_backend
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+    ports:
+      - "7500:7500"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=db;Database=WorkflowDB;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;
+    networks:
+      - workflow_network
+    restart: unless-stopped
+
+  # Frontend (React + Vite)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: workflow_frontend
+    depends_on:
+      - backend
+    ports:
+      - "6100:6100"
+    environment:
+      - VITE_API_URL=http://backend:7500
+    networks:
+      - workflow_network
+    restart: unless-stopped
+
+volumes:
+  sqlserver_data:
+    driver: local
+
+networks:
+  workflow_network:
+    driver: bridge
