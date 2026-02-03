@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" 
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  id="Definitions_1" 
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_System" name="System">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Direct_Manager" name="Direct Manager">
+        <bpmn:flowNodeRef>Gateway_Approves_the_visit_2</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Employee" name="Employee">
+        <bpmn:flowNodeRef>Task_Requests_visitor_access_with_visitor_nam_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Reception_Desk" name="Reception Desk">
+        <bpmn:flowNodeRef>Task_Prepares_visitor_badge_4</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Security_Officer" name="Security Officer">
+        <bpmn:flowNodeRef>Task_Runs_background_check_for_sensitive_area_3</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Start" />
+    <bpmn:task id="Task_Requests_visitor_access_with_visitor_nam_1" name="Requests visitor access with visitor name, company, visit date, visit purpose, and areas to access" />
+    <bpmn:exclusiveGateway id="Gateway_Approves_the_visit_2" name="Approves the visit" />
+    <bpmn:task id="Task_Runs_background_check_for_sensitive_area_3" name="Runs background check for sensitive areas" />
+    <bpmn:task id="Task_Prepares_visitor_badge_4" name="Prepares visitor badge" />
+    <bpmn:endEvent id="EndEvent_1" name="End" />
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_Requests_visitor_access_with_visitor_nam_1" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Requests_visitor_access_with_visitor_nam_1" targetRef="Gateway_Approves_the_visit_2" />
+    <bpmn:sequenceFlow id="Flow_3" name="Approved" sourceRef="Gateway_Approves_the_visit_2" targetRef="Task_Runs_background_check_for_sensitive_area_3" />
+    <bpmn:sequenceFlow id="Flow_4" name="Rejected" sourceRef="Gateway_Approves_the_visit_2" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_Runs_background_check_for_sensitive_area_3" targetRef="Task_Prepares_visitor_badge_4" />
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_Prepares_visitor_badge_4" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Lane_System_di" bpmnElement="Lane_System" isHorizontal="true">
+        <dc:Bounds x="30" y="50" width="2050" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Direct_Manager_di" bpmnElement="Lane_Direct_Manager" isHorizontal="true">
+        <dc:Bounds x="30" y="250" width="2050" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Employee_di" bpmnElement="Lane_Employee" isHorizontal="true">
+        <dc:Bounds x="30" y="450" width="2050" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Reception_Desk_di" bpmnElement="Lane_Reception_Desk" isHorizontal="true">
+        <dc:Bounds x="30" y="650" width="2050" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Security_Officer_di" bpmnElement="Lane_Security_Officer" isHorizontal="true">
+        <dc:Bounds x="30" y="850" width="2050" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="132" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Requests_visitor_access_with_visitor_nam_1_di" bpmnElement="Task_Requests_visitor_access_with_visitor_nam_1">
+        <dc:Bounds x="400" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Approves_the_visit_2_di" bpmnElement="Gateway_Approves_the_visit_2" isMarkerVisible="true">
+        <dc:Bounds x="725" y="325" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Runs_background_check_for_sensitive_area_3_di" bpmnElement="Task_Runs_background_check_for_sensitive_area_3">
+        <dc:Bounds x="1000" y="870" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Prepares_visitor_badge_4_di" bpmnElement="Task_Prepares_visitor_badge_4">
+        <dc:Bounds x="1300" y="670" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1632" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="168" y="150" />
+        <di:waypoint x="284" y="150" />
+        <di:waypoint x="284" y="550" />
+        <di:waypoint x="400" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="500" y="550" />
+        <di:waypoint x="612" y="550" />
+        <di:waypoint x="612" y="350" />
+        <di:waypoint x="725" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="775" y="350" />
+        <di:waypoint x="887" y="350" />
+        <di:waypoint x="887" y="910" />
+        <di:waypoint x="1000" y="910" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="867" y="614" width="80" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="775" y="350" />
+        <di:waypoint x="1203" y="350" />
+        <di:waypoint x="1203" y="110" />
+        <di:waypoint x="1632" y="110" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1183" y="246" width="80" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="1100" y="910" />
+        <di:waypoint x="1200" y="910" />
+        <di:waypoint x="1200" y="710" />
+        <di:waypoint x="1300" y="710" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="1400" y="710" />
+        <di:waypoint x="1516" y="710" />
+        <di:waypoint x="1516" y="110" />
+        <di:waypoint x="1632" y="110" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

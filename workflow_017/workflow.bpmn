@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" 
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  id="Definitions_1" 
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_System" name="System">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Procurement_Analyst" name="Procurement Analyst">
+        <bpmn:flowNodeRef>Task_Evaluates_quotes_based_on_price_quality__3</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Procurement_Manager" name="Procurement Manager">
+        <bpmn:flowNodeRef>Task_Selects_winning_vendor_4</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Procurement_Officer" name="Procurement Officer">
+        <bpmn:flowNodeRef>Task_Creates_RFQ_with_item_specifications_qua_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Sends_RFQ_to_approved_vendors_2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Notifies_all_vendors_of_decision_5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Initiates_purchase_order_for_selected_ve_6</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Start" />
+    <bpmn:task id="Task_Creates_RFQ_with_item_specifications_qua_1" name="Creates RFQ with item specifications, quantity, delivery requirements, and deadline for responses" />
+    <bpmn:task id="Task_Sends_RFQ_to_approved_vendors_2" name="Sends RFQ to approved vendors" />
+    <bpmn:task id="Task_Evaluates_quotes_based_on_price_quality__3" name="Evaluates quotes based on price, quality, and delivery time" />
+    <bpmn:task id="Task_Selects_winning_vendor_4" name="Selects winning vendor" />
+    <bpmn:task id="Task_Notifies_all_vendors_of_decision_5" name="Notifies all vendors of decision" />
+    <bpmn:task id="Task_Initiates_purchase_order_for_selected_ve_6" name="Initiates purchase order for selected vendor" />
+    <bpmn:endEvent id="EndEvent_1" name="End" />
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_Creates_RFQ_with_item_specifications_qua_1" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Creates_RFQ_with_item_specifications_qua_1" targetRef="Task_Sends_RFQ_to_approved_vendors_2" />
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_Sends_RFQ_to_approved_vendors_2" targetRef="Task_Evaluates_quotes_based_on_price_quality__3" />
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_Evaluates_quotes_based_on_price_quality__3" targetRef="Task_Selects_winning_vendor_4" />
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_Selects_winning_vendor_4" targetRef="Task_Notifies_all_vendors_of_decision_5" />
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_Notifies_all_vendors_of_decision_5" targetRef="Task_Initiates_purchase_order_for_selected_ve_6" />
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="Task_Initiates_purchase_order_for_selected_ve_6" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Lane_System_di" bpmnElement="Lane_System" isHorizontal="true">
+        <dc:Bounds x="30" y="50" width="2650" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Procurement_Analyst_di" bpmnElement="Lane_Procurement_Analyst" isHorizontal="true">
+        <dc:Bounds x="30" y="250" width="2650" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Procurement_Manager_di" bpmnElement="Lane_Procurement_Manager" isHorizontal="true">
+        <dc:Bounds x="30" y="450" width="2650" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Procurement_Officer_di" bpmnElement="Lane_Procurement_Officer" isHorizontal="true">
+        <dc:Bounds x="30" y="650" width="2650" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="132" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Creates_RFQ_with_item_specifications_qua_1_di" bpmnElement="Task_Creates_RFQ_with_item_specifications_qua_1">
+        <dc:Bounds x="400" y="710" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Sends_RFQ_to_approved_vendors_2_di" bpmnElement="Task_Sends_RFQ_to_approved_vendors_2">
+        <dc:Bounds x="700" y="710" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Evaluates_quotes_based_on_price_quality__3_di" bpmnElement="Task_Evaluates_quotes_based_on_price_quality__3">
+        <dc:Bounds x="1000" y="310" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Selects_winning_vendor_4_di" bpmnElement="Task_Selects_winning_vendor_4">
+        <dc:Bounds x="1300" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Notifies_all_vendors_of_decision_5_di" bpmnElement="Task_Notifies_all_vendors_of_decision_5">
+        <dc:Bounds x="1600" y="710" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Initiates_purchase_order_for_selected_ve_6_di" bpmnElement="Task_Initiates_purchase_order_for_selected_ve_6">
+        <dc:Bounds x="1900" y="710" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2232" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="168" y="150" />
+        <di:waypoint x="284" y="150" />
+        <di:waypoint x="284" y="750" />
+        <di:waypoint x="400" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="500" y="750" />
+        <di:waypoint x="700" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="800" y="750" />
+        <di:waypoint x="900" y="750" />
+        <di:waypoint x="900" y="350" />
+        <di:waypoint x="1000" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="1100" y="350" />
+        <di:waypoint x="1200" y="350" />
+        <di:waypoint x="1200" y="550" />
+        <di:waypoint x="1300" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="1400" y="550" />
+        <di:waypoint x="1500" y="550" />
+        <di:waypoint x="1500" y="750" />
+        <di:waypoint x="1600" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="1700" y="750" />
+        <di:waypoint x="1900" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="2000" y="750" />
+        <di:waypoint x="2116" y="750" />
+        <di:waypoint x="2116" y="150" />
+        <di:waypoint x="2232" y="150" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" 
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  id="Definitions_1" 
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_System" name="System">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Employee" name="Employee">
+        <bpmn:flowNodeRef>Task_Submits_maintenance_request_with_locatio_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Confirms_issue_resolved_6</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Facilities_Coordinator" name="Facilities Coordinator">
+        <bpmn:flowNodeRef>Task_Reviews_and_assigns_priority_2</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Facilities_Manager" name="Facilities Manager">
+        <bpmn:flowNodeRef>Gateway_Approves_or_rejects_4</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Maintenance_Technician" name="Maintenance Technician">
+        <bpmn:flowNodeRef>Task_Inspects_and_provides_repair_estimate_3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Completes_repair_and_documents_work_done_5</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Start" />
+    <bpmn:task id="Task_Submits_maintenance_request_with_locatio_1" name="Submits maintenance request with location, issue type, description, and urgency" />
+    <bpmn:task id="Task_Reviews_and_assigns_priority_2" name="Reviews and assigns priority" />
+    <bpmn:task id="Task_Inspects_and_provides_repair_estimate_3" name="Inspects and provides repair estimate" />
+    <bpmn:exclusiveGateway id="Gateway_Approves_or_rejects_4" name="Approves or rejects" />
+    <bpmn:task id="Task_Completes_repair_and_documents_work_done_5" name="Completes repair and documents work done" />
+    <bpmn:task id="Task_Confirms_issue_resolved_6" name="Confirms issue resolved" />
+    <bpmn:endEvent id="EndEvent_1" name="End" />
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_Submits_maintenance_request_with_locatio_1" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Submits_maintenance_request_with_locatio_1" targetRef="Task_Reviews_and_assigns_priority_2" />
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_Reviews_and_assigns_priority_2" targetRef="Task_Inspects_and_provides_repair_estimate_3" />
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_Inspects_and_provides_repair_estimate_3" targetRef="Gateway_Approves_or_rejects_4" />
+    <bpmn:sequenceFlow id="Flow_5" name="Approved" sourceRef="Gateway_Approves_or_rejects_4" targetRef="Task_Completes_repair_and_documents_work_done_5" />
+    <bpmn:sequenceFlow id="Flow_6" name="Rejected" sourceRef="Gateway_Approves_or_rejects_4" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="Task_Completes_repair_and_documents_work_done_5" targetRef="Task_Confirms_issue_resolved_6" />
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="Task_Confirms_issue_resolved_6" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Lane_System_di" bpmnElement="Lane_System" isHorizontal="true">
+        <dc:Bounds x="30" y="50" width="2650" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Employee_di" bpmnElement="Lane_Employee" isHorizontal="true">
+        <dc:Bounds x="30" y="250" width="2650" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Facilities_Coordinator_di" bpmnElement="Lane_Facilities_Coordinator" isHorizontal="true">
+        <dc:Bounds x="30" y="450" width="2650" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Facilities_Manager_di" bpmnElement="Lane_Facilities_Manager" isHorizontal="true">
+        <dc:Bounds x="30" y="650" width="2650" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Maintenance_Technician_di" bpmnElement="Lane_Maintenance_Technician" isHorizontal="true">
+        <dc:Bounds x="30" y="850" width="2650" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="132" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Submits_maintenance_request_with_locatio_1_di" bpmnElement="Task_Submits_maintenance_request_with_locatio_1">
+        <dc:Bounds x="400" y="310" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Reviews_and_assigns_priority_2_di" bpmnElement="Task_Reviews_and_assigns_priority_2">
+        <dc:Bounds x="700" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Inspects_and_provides_repair_estimate_3_di" bpmnElement="Task_Inspects_and_provides_repair_estimate_3">
+        <dc:Bounds x="1000" y="910" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Approves_or_rejects_4_di" bpmnElement="Gateway_Approves_or_rejects_4" isMarkerVisible="true">
+        <dc:Bounds x="1325" y="725" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Completes_repair_and_documents_work_done_5_di" bpmnElement="Task_Completes_repair_and_documents_work_done_5">
+        <dc:Bounds x="1600" y="870" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Confirms_issue_resolved_6_di" bpmnElement="Task_Confirms_issue_resolved_6">
+        <dc:Bounds x="1900" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="2232" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="168" y="150" />
+        <di:waypoint x="284" y="150" />
+        <di:waypoint x="284" y="350" />
+        <di:waypoint x="400" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="500" y="350" />
+        <di:waypoint x="600" y="350" />
+        <di:waypoint x="600" y="550" />
+        <di:waypoint x="700" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="800" y="550" />
+        <di:waypoint x="900" y="550" />
+        <di:waypoint x="900" y="950" />
+        <di:waypoint x="1000" y="950" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="1100" y="950" />
+        <di:waypoint x="1212" y="950" />
+        <di:waypoint x="1212" y="750" />
+        <di:waypoint x="1325" y="750" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="1375" y="750" />
+        <di:waypoint x="1487" y="750" />
+        <di:waypoint x="1487" y="910" />
+        <di:waypoint x="1600" y="910" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1467" y="814" width="80" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="1375" y="750" />
+        <di:waypoint x="1803" y="750" />
+        <di:waypoint x="1803" y="110" />
+        <di:waypoint x="2232" y="110" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1783" y="446" width="80" height="16" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1700" y="910" />
+        <di:waypoint x="1800" y="910" />
+        <di:waypoint x="1800" y="310" />
+        <di:waypoint x="1900" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="2000" y="310" />
+        <di:waypoint x="2116" y="310" />
+        <di:waypoint x="2116" y="110" />
+        <di:waypoint x="2232" y="110" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
