@@ -10,7 +10,7 @@ W05-A training request workflow where Employee submits a training request with c
 
 W06-An expense reimbursement workflow where Employee submits expense claim with expense type, amount, date, description, and receipt upload. The Direct Manager verifies and approves or rejects. If approved, Finance Officer reviews for policy compliance and processes payment by entering payment date and transaction reference. Employee receives reimbursement confirmation.
 
-W07-A purchase order workflow where Requester creates a purchase request with item description, quantity, estimated cost, vendor name, and urgency level. The Department Manager approves or rejects based on budget. If amount exceeds 10000, Finance Director provides additional approval. Procurement Officer creates the purchase order with PO number and delivery date. Upon delivery, Requester confirms receipt of goods.
+W07-Requester submits a Purchase Request Form containing item description, quantity, estimated cost, vendor name, and urgency level. The Department Manager approves or rejects the request based on budget, with additional approval from the Finance Director if the amount exceeds 10,000. Upon approval, the Procurement Officer generates the purchase order with PO number and delivery date. After delivery, the Requester confirms receipt of goods.
 
 W08-An invoice processing workflow where Accounts Payable Clerk receives and logs invoice with vendor name, invoice number, amount, due date, and line items. The Department Manager verifies goods or services received and approves. Finance Manager reviews for budget allocation. Accounts Payable Clerk schedules payment and records transaction. Vendor receives payment confirmation.
 
